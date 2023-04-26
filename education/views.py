@@ -29,7 +29,7 @@ def update_eq(request, id):
     dO = DimEduc_Equipements.objects.get(id=id)
     form = equi(instance=dO)
     if request.method == 'POST':
-        form = equi(request.POST, instance = dO)
+        form = equi(request.POST, instance=dO)
         if form.is_valid():
             form.save()
             return redirect('/education/DimEqui/')

@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import include
 
+from django.contrib.auth.views import LoginView, LogoutView
 
 from .import views
 from django.contrib import admin
@@ -40,18 +41,25 @@ urlpatterns = [
     path('new_post', views.new_post, name="new_post"),
     path('update_post/<int:pk>/', views.update_post, name="update_post"),
     path('delete_post/<int:id>/', views.delete_post, name="delete_post"),
-    path('profile', views.PROFILE, name='profile'),
-    path('Profile/update', views.PROFILE_UPDATE, name='profile_update'),
+
     path('ressource/',views.ress,name="ressource"),
     path('upda_res/<int:id>/',views.upda_ress,name="upda_res"),
     path('delete_ress/<int:id>/',views.del_ress,name="delete_ress"),
+    path('all/', views.user_table, name='all'),
+    path('add_profile/', views.ajout_profile, name='add_profile'),
+    path('edit/<int:id>/', views.user_edit, name='edit'),
+    path('delete/<int:id>/', views.delete_user, name='delete'),
 
-    # url home
-    path('home', include('home.urls')),
+
+
+
+    path('sante', views.san, name='sante'),
+    path('education', views.edu, name='education'),
+
+
     path('education/', include('education.urls')),
 
     path('sante/', include('sante.urls')),
-
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
