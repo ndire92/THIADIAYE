@@ -65,30 +65,7 @@ def DG(request):
     else:
         form = Dg()
 
-    return render(request, 'edu/gouver.html', {'form': form, 'dataObject': DimEduc_Gouvernance.objects.all()})
-
-# update gouvernance
-
-
-def update_gv(request, id):
-    dataObje = DimEduc_Gouvernance.objects.get(id=id)
-    form = Dg(instance=dataObje)
-    if request.method == 'POST':
-        form = Dg(request.POST, instance=dataObje)
-        if form.is_valid():
-            form.save()
-            messages.success(request, " Are Successfully Added !")
-            return redirect('/education/DimGou/')
-
-    context = {
-
-        'form': form,
-
-    }
-    return render(request, 'edu/gouver.html', context)
-
-# delete equipement
-
+    
 
 def delete_gv(request, id):
     dataObje = DimEduc_Gouvernance.objects.get(id=id)
@@ -191,16 +168,6 @@ def delete_perfor(request, id):
     return render(request, 'edu/delete_perfo.html', context)
 
 
-def dis(request):
-    if request.method == 'POST':
-        form = acc(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, " Are Successfully Added !")
-            return redirect('/education/dim_Access/')
-    else:
-        form = acc()
-    return render(request, 'edu/dimdass.html', {'form': form, 'dbacess': DimEduc_Access.objects.all()})
 
 
 # update perfor
