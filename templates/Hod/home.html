@@ -1,12 +1,15 @@
 {% extends 'pages/base.html' %}
 {% load static %}
 {% block content  %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="page-wrapper">
     <div class="content container-fluid">
        <div class="page-header">
           <div class="row">
              <div class="col-sm-12">
-                <h3 class="page-title">Bienvenu&nbsp;{{ user.first_name}} {{ user.last_name}}&nbsp;à Thiadiaye</h3>
+                <h3 class="page-title">Bienvenue&nbsp;{{ user.first_name}} {{ user.last_name}}&nbsp;à Thiadiaye</h3>
                 <ul class="breadcrumb">
                    <li class="breadcrumb-item active"></li>
                 </ul>
@@ -18,7 +21,7 @@
              <div class="card bg-one w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                      
+
                       <div class="db-info">
                          <h3>{{palu}}</h3>
                          <h6>Paludisme</h6>
@@ -32,7 +35,7 @@
              <div class="card bg-two w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                   
+
                       <div class="db-info">
                          <h3>{{repro}}</h3>
                          <h6>Reproduction Jeune</h6>
@@ -45,7 +48,7 @@
              <div class="card bg-three w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                     
+
                       <div class="db-info">
                          <h3>{{plan}}</h3>
                          <h6>Planification Familiale</h6>
@@ -54,11 +57,11 @@
                 </div>
              </div>
           </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <div >   
+          <div >
              <div class="card bg-four w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                     
+
                       <div class="db-info">
                          <h3>{{survie}}</h3>
                          <h6>Survie Enfant</h6>
@@ -72,7 +75,7 @@
              <div class="card bg-four w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                     
+
                       <div class="db-info">
                          <h3>{{vacc}}</h3>
                          <h6>Vaccination Routine</h6>
@@ -86,7 +89,7 @@
              <div class="card bg-four w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                     
+
                       <div class="db-info">
                          <h3>{{dimequ}}</h3>
                          <h6>Equipements</h6>
@@ -100,7 +103,7 @@
              <div class="card bg-four w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                     
+
                       <div class="db-info">
                          <h3>{{dimgou}}</h3>
                          <h6>Gouvernance</h6>
@@ -114,7 +117,7 @@
              <div class="card bg-four w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                     
+
                       <div class="db-info">
                          <h3>{{dimper}}</h3>
                          <h6>Personnel</h6>
@@ -128,7 +131,7 @@
              <div class="card bg-four w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                     
+
                       <div class="db-info">
                          <h3>{{dimperf}}</h3>
                          <h6>Performance</h6>
@@ -142,7 +145,7 @@
              <div class="card bg-four w-100">
                 <div class="card-body">
                    <div class="db-widgets d-flex justify-content-between align-items-center">
-                     
+
                       <div class="db-info">
                          <h3>{{dimacc}}</h3>
                          <h6>Access</h6>
@@ -151,7 +154,7 @@
                 </div>
              </div>
           </div>
-           
+
        </div>
 
 
@@ -168,7 +171,7 @@
                          <ul class="list-inline-group text-right mb-0 pl-0">
                             <li class="list-inline-item">
                                <div class="form-group mb-0 amount-spent-select">
-                                
+
                                </div>
                             </li>
                          </ul>
@@ -176,7 +179,7 @@
                    </div>
                 </div>
                 <div class="card-body">
-                   <div id="all_details"></div>
+                   <canvas id="myBarChart"></canvas>
                 </div>
              </div>
           </div>
@@ -191,7 +194,7 @@
                          <ul class="list-inline-group text-right mb-0 pl-0">
                             <li class="list-inline-item">
                                <div class="form-group mb-0 amount-spent-select">
-                                
+
                                </div>
                             </li>
                          </ul>
@@ -199,7 +202,7 @@
                    </div>
                 </div>
                 <div class="card-body">
-                   <div id="stud_gender"></div>
+                    <canvas id="myPieChart"></canvas>
                 </div>
              </div>
           </div>
@@ -217,7 +220,7 @@
                         <ul class="list-inline-group text-right mb-0 pl-0">
                            <li class="list-inline-item">
                               <div class="form-group mb-0 amount-spent-select">
-                                 
+
                               </div>
                            </li>
                         </ul>
@@ -225,7 +228,7 @@
                   </div>
                </div>
                <div class="card-body">
-                  <div id="all"></div>
+                  <div ><canvas id="myChart"></canvas></div>
                </div>
             </div>
          </div>
@@ -240,7 +243,7 @@
                         <ul class="list-inline-group text-right mb-0 pl-0">
                            <li class="list-inline-item">
                               <div class="form-group mb-0 amount-spent-select">
-                                 
+
                               </div>
                            </li>
                         </ul>
@@ -248,11 +251,179 @@
                   </div>
                </div>
                <div class="card-body">
-                  <div id="course"></div>
+                 <canvas id="myPolarAreaChart"></canvas>
                </div>
             </div>
          </div>
+
       </div>
     </div>
+
     {% include 'includes/chart.html'%}
+
+<script>
+ // Get the canvas element
+var ctx = document.getElementById('myChart').getContext('2d');
+
+// Define the chart data
+var chartData = {
+    labels:['Gouvernance', 'Equipements', 'Personnel', 'Performance', 'Access'],
+    datasets: [{
+        label: 'Education',
+        data: [{{dimgou}}, {{dimequ}}, {{dimper}}, {{dimperf}}, {{dimacc}}],
+   backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 5
+    }]
+};
+
+// Create the chart
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: chartData,
+    options: {}
+});
+
+
+</script>
+<script>
+// Get the canvas element
+var ctx = document.getElementById('myPieChart').getContext('2d');
+
+// Define the chart data
+var chartData = {
+    labels:['Gouvernance', 'Equipements', 'Personnel', 'Performance', 'Access'],
+    datasets: [{
+        label: 'Colors',
+        data: [{{dimgou}}, {{dimequ}}, {{dimper}}, {{dimperf}}, {{dimacc}}],
+      backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+        ],
+        borderWidth: 1
+    }]
+};
+
+// Create the chart
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: chartData,
+    options: {}
+});
+
+</script>
+
+<script>
+// Get the canvas element
+var ctx = document.getElementById('myBarChart').getContext('2d');
+
+// Define the chart data
+var chartData = {
+    labels: ['Paludisme', 'Reproduction Jeune', 'Planification Familiale', 'Survie Enfant', 'Vaccination Routine'],
+    datasets: [{
+        label: 'Santé',
+
+        data:[{{palu}}, {{repro}}, {{plan}}, {{survie}}, {{vacc}}],
+         backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+        ],
+
+        borderWidth: 1
+    }]
+};
+
+// Create the chart
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: chartData,
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+</script>
+<script>
+
+// Get the canvas element
+var ctx = document.getElementById('myPolarAreaChart').getContext('2d');
+
+// Define the chart data
+var chartData = {
+    labels: ['Paludisme', 'Reproduction Jeune', 'Planification Familiale', 'Survie Enfant', 'Vaccination Routine'],
+    datasets: [{
+        label: 'My First Dataset',
+        data: [{{palu}}, {{repro}}, {{plan}}, {{survie}}, {{vacc}}],
+   backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+        ],
+        borderWidth: 1
+    }]
+};
+
+// Create the chart
+var myChart = new Chart(ctx, {
+    type: 'polarArea',
+    data: chartData,
+    options: {}
+});
+
+</script>
     {% endblock %}
